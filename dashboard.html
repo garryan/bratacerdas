@@ -14,15 +14,12 @@
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #111111; }
         h1, h2, h3, th { font-family: 'Montserrat', sans-serif; }
-        .sidebar-scroll::-webkit-scrollbar { width: 4px; }
-        .sidebar-scroll::-webkit-scrollbar-track { background: #0a0a0a; }
-        .sidebar-scroll::-webkit-scrollbar-thumb { background: #222; border-radius: 2px; }
     </style>
 </head>
 <body class="text-gray-200 antialiased min-h-screen flex flex-col md:flex-row">
 
     <aside class="w-full md:w-64 bg-[#0a0a0a] border-b md:border-b-0 md:border-r border-gray-800 flex flex-col justify-between shrink-0 z-40">
-        <div class="sidebar-scroll overflow-y-auto flex-1">
+        <div class="overflow-y-auto flex-1">
             <div class="h-20 flex items-center px-6 border-b border-gray-800/60 justify-between">
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 bg-gradient-to-br from-amber-400 to-amber-500 rounded-full flex flex-col items-center justify-center font-bold text-[#111111] shadow-md">
@@ -47,7 +44,6 @@
             </div>
 
             <nav class="p-4 space-y-1 text-sm">
-                
                 <a href="index.html" class="flex items-center space-x-3 px-4 py-3 rounded-xl text-gray-400 hover:text-amber-400 hover:bg-amber-400/5 transition duration-200">
                     <i class="fa-solid fa-house w-5 text-center text-base"></i>
                     <span class="font-medium">Home</span>
@@ -63,35 +59,34 @@
                     </button>
 
                     <div id="sub-menu-order" class="pl-4 space-y-1 hidden transition duration-200">
-                        <a href="dashboard.html" class="flex items-center justify-between px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#0A2A5E] to-[#0D3678] text-white shadow-md shadow-blue-950/40 font-semibold">
+                        <a href="#" id="menu-my-order" onclick="switchContent('my-order')" class="flex items-center justify-between px-4 py-2.5 rounded-xl text-gray-400 hover:text-amber-400 hover:bg-amber-400/5 transition duration-200">
                             <span class="flex items-center space-x-3">
-                                <i class="fa-solid fa-cart-shopping w-5 text-center text-amber-400 text-sm"></i>
+                                <i class="fa-solid fa-cart-shopping w-5 text-center text-sm"></i>
                                 <span>My Order</span>
                             </span>
                             <span class="px-2 py-0.5 text-[10px] font-black bg-red-500 text-white rounded-md">1</span>
                         </a>
-                        <a href="#" onclick="switchContent('order-list')" class="flex items-center space-x-3 px-4 py-2.5 rounded-xl text-gray-400 hover:text-amber-400 hover:bg-amber-400/5 transition duration-200">
+                        <a href="#" id="menu-order-list" onclick="switchContent('order-list')" class="flex items-center space-x-3 px-4 py-2.5 rounded-xl text-gray-400 hover:text-amber-400 hover:bg-amber-400/5 transition duration-200">
                             <i class="fa-solid fa-list-check w-5 text-center text-sm"></i>
                             <span>Order List</span>
                         </a>
                     </div>
                 </div>
 
-                <a href="#" onclick="switchContent('my-test')" class="flex items-center space-x-3 px-4 py-3 rounded-xl text-gray-400 hover:text-amber-400 hover:bg-amber-400/5 transition duration-200">
+                <a href="#" id="menu-my-test" onclick="switchContent('my-test')" class="flex items-center space-x-3 px-4 py-3 rounded-xl text-gray-400 hover:text-amber-400 hover:bg-amber-400/5 transition duration-200">
                     <i class="fa-solid fa-book-open w-5 text-center text-base"></i>
                     <span class="font-medium">My Test</span>
                 </a>
 
-                <a href="#" onclick="switchContent('my-class')" class="flex items-center space-x-3 px-4 py-3 rounded-xl text-gray-400 hover:text-amber-400 hover:bg-amber-400/5 transition duration-200">
+                <a href="#" id="menu-my-class" onclick="switchContent('my-class')" class="flex items-center space-x-3 px-4 py-3 rounded-xl text-gray-400 hover:text-amber-400 hover:bg-amber-400/5 transition duration-200">
                     <i class="fa-solid fa-chalkboard-user w-5 text-center text-base"></i>
                     <span class="font-medium">My Class</span>
                 </a>
 
-                <a href="#" onclick="switchContent('my-account')" class="flex items-center space-x-3 px-4 py-3 rounded-xl text-gray-400 hover:text-amber-400 hover:bg-amber-400/5 transition duration-200">
+                <a href="#" id="menu-my-account" onclick="switchContent('my-account')" class="flex items-center space-x-3 px-4 py-3 rounded-xl text-gray-400 hover:text-amber-400 hover:bg-amber-400/5 transition duration-200">
                     <i class="fa-solid fa-user-gear w-5 text-center text-base"></i>
                     <span class="font-medium">My Account</span>
                 </a>
-
             </nav>
         </div>
 
@@ -104,14 +99,14 @@
     </aside>
 
     <main class="flex-1 flex flex-col min-w-0">
-        <header class="h-20 bg-[#111111] border-b border-gray-800 flex items-center justify-between px-4 sm:px-8 shrink-0">
+        <header class="h-20 bg-[#111111] border-b border-gray-800 flex items-center px-4 sm:px-8 shrink-0">
             <h1 id="topbar-title" class="text-xl font-bold text-white tracking-wide flex items-center gap-2">
                 <span class="w-1.5 h-6 bg-amber-400 rounded-full block"></span> My Order
             </h1>
         </header>
 
         <div class="p-4 sm:p-8 flex-1 overflow-y-auto">
-            <div class="max-w-7xl mx-auto space-y-6">
+            <div class="max-w-4xl mx-auto space-y-6">
                 
                 <div id="panel-my-order" class="content-panel bg-[#161616] border border-gray-800 rounded-2xl shadow-xl overflow-hidden">
                     <div class="px-6 py-5 bg-[#1a1a1a] border-b border-gray-800">
@@ -132,112 +127,109 @@
                                         <th class="p-4 font-bold text-center rounded-r-xl">Aksi</th>
                                     </tr>
                                 </thead>
-                                <tbody class="text-sm divide-y divide-gray-800/50 font-medium text-gray-300">
-                                    </tbody>
-                                tfoot
+                                <tbody class="text-sm divide-y divide-gray-800/50 font-medium text-gray-300"></tbody>
                             </table>
                         </div>
                     </div>
                 </div>
 
-                <div id="panel-order-list" class="content-panel bg-[#161616] border border-gray-800 rounded-2xl shadow-xl overflow-hidden hidden">
-                    <div class="px-6 py-5 bg-[#1a1a1a] border-b border-gray-800">
-                        <h3 class="text-lg font-bold text-white">Riwayat Transaksi (Order List)</h3>
-                        <p class="text-xs text-gray-400 mt-0.5">Daftar semua riwayat transaksi bimbingan dan invoice paket Anda.</p>
-                    </div>
-                    <div class="p-8 text-center text-gray-500 text-sm">
-                        <i class="fa-solid fa-folder-open text-4xl text-gray-700 mb-3 block"></i>
-                        Belum ada riwayat transaksi yang terselesaikan.
-                    </div>
-                </div>
-
-                <div id="panel-my-test" class="content-panel bg-[#161616] border border-gray-800 rounded-2xl shadow-xl overflow-hidden hidden">
-                    <div class="px-6 py-5 bg-[#1a1a1a] border-b border-gray-800">
-                        <h3 class="text-lg font-bold text-white">Sistem Try Out CAT Online (My Test)</h3>
-                        <p class="text-xs text-gray-400 mt-0.5">Akses lembar pengerjaan simulasi ujian taktis psikologi dan kecermatan Anda.</p>
-                    </div>
-                    <div class="p-8 text-center text-gray-500 text-sm">
-                        <i class="fa-solid fa-laptop-code text-4xl text-gray-700 mb-3 block"></i>
-                        Silakan lakukan pembayaran paket terlebih dahulu untuk mengaktifkan modul ujian CAT.
-                    </div>
-                </div>
-
-                <div id="panel-my-class" class="content-panel bg-[#161616] border border-gray-800 rounded-2xl shadow-xl overflow-hidden hidden">
-                    <div class="px-6 py-5 bg-[#1a1a1a] border-b border-gray-800">
-                        <h3 class="text-lg font-bold text-white">Jadwal Ruang Kelas Saya (My Class)</h3>
-                        <p class="text-xs text-gray-400 mt-0.5">Pantau link absensi tatap muka online/offline dan rekap tatap muka bersama mentor.</p>
-                    </div>
-                    <div class="p-8 text-center text-gray-500 text-sm">
-                        <i class="fa-solid fa-screen-users text-4xl text-gray-700 mb-3 block"></i>
-                        Modul ruang bimbingan kelas belum aktif.
-                    </div>
-                </div>
-
                 <div id="panel-my-account" class="content-panel bg-[#161616] border border-gray-800 rounded-2xl shadow-xl overflow-hidden hidden">
                     <div class="px-6 py-5 bg-[#1a1a1a] border-b border-gray-800">
-                        <h3 class="text-lg font-bold text-white">Pengaturan Profil Akun (My Account)</h3>
-                        <p class="text-xs text-gray-400 mt-0.5">Kelola informasi biodata pribadi dan preferensi penempatan penugasan instansi.</p>
+                        <h3 class="text-lg font-bold text-white">Lengkapi Biodata Taruna</h3>
+                        <p class="text-xs text-gray-400 mt-0.5">Siswa baru wajib mengisi nomor WhatsApp aktif dan target ujian seleksi.</p>
                     </div>
-                    <div class="p-6 space-y-4 max-w-md">
-                        <div>
-                            <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Nama Lengkap</label>
-                            <input type="text" readonly value="RYAN GARRY" class="w-full bg-[#222] border border-gray-800 rounded-xl px-4 py-2 text-sm text-gray-400 outline-none">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Metode Autentikasi</label>
-                            <span class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 rounded-lg text-xs font-semibold"><i class="fa-brands fa-google"></i> Terhubung via Google Auth</span>
-                        </div>
+                    
+                    <div class="m-6 p-4 bg-amber-400/10 border border-amber-400/20 text-amber-400 rounded-xl text-xs flex items-center gap-3">
+                        <i class="fa-solid fa-triangle-exclamation text-base"></i>
+                        <span><strong>Sistem Keamanan:</strong> Email Anda telah diverifikasi otomatis oleh Google dan tidak dapat diubah.</span>
                     </div>
+
+                    <form id="form-update-profile" class="p-6 space-y-5">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-400 uppercase mb-2 tracking-wide">Nama Lengkap</label>
+                                <input type="text" value="RYAN GARRY" class="w-full bg-[#1e1e1e] border border-gray-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-400 transition">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-400 uppercase mb-2 tracking-wide">Email Siswa (Terkunci)</label>
+                                <input type="email" value="ryangarry@gmail.com" disabled class="w-full bg-[#111111] border border-gray-800 rounded-xl px-4 py-3 text-sm text-gray-500 cursor-not-allowed outline-none">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-400 uppercase mb-2 tracking-wide">Nomor WhatsApp Aktif</label>
+                                <input type="tel" required placeholder="Contoh: 08123456789" class="w-full bg-[#1e1e1e] border border-gray-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-400 transition">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-400 uppercase mb-2 tracking-wide">Target Seleksi Utama</label>
+                                <select required class="w-full bg-[#1e1e1e] border border-gray-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-400 transition appearance-none">
+                                    <option value="" disabled selected>Pilih Instansi Target</option>
+                                    <option value="AKPOL">AKPOL (Akademi Kepolisian)</option>
+                                    <option value="BINTARA">BINTARA POLRI</option>
+                                    <option value="AKMIL">AKMIL (Akademi Militer)</option>
+                                    <option value="ASN">ASN / Sekolah Kedinasan</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 border-t border-gray-800 flex justify-end">
+                            <button type="submit" class="px-6 py-3 bg-gradient-to-r from-amber-400 to-amber-500 text-black font-extrabold text-xs rounded-xl shadow-lg shadow-amber-500/10 uppercase tracking-wider hover:scale-102 transition">
+                                Simpan Profil & Aktifkan Fitur
+                            </button>
+                        </div>
+                    </form>
                 </div>
+
+                <div id="panel-order-list" class="content-panel bg-[#161616] border border-gray-800 rounded-2xl shadow-xl p-8 text-center hidden">Riwayat Transaksi Kosong</div>
+                <div id="panel-my-test" class="content-panel bg-[#161616] border border-gray-800 rounded-2xl shadow-xl p-8 text-center hidden">Modul Test Belum Aktif</div>
+                <div id="panel-my-class" class="content-panel bg-[#161616] border border-gray-800 rounded-2xl shadow-xl p-8 text-center hidden">Modul Kelas Belum Aktif</div>
 
             </div>
         </div>
-
-        <footer class="h-16 border-t border-gray-900 bg-[#0a0a0a] flex items-center justify-between px-6 text-xs text-gray-500">
-            <p>&copy; 2026 <strong>Brata Cerdas.</strong> Platform BAJRATARA Tactical System.</p>
-        </footer>
     </main>
 
     <script src="https://bratacerdas.com/plugins/jquery/jquery.min.js"></script>
-
     <script>
         $(document).ready(function() {
+            // Cek parameter di URL (?page=my-account) untuk mendeteksi user baru dari halaman login
+            const urlParams = new URLSearchParams(window.location.search);
+            const targetPage = urlParams.get('page');
+
+            if (targetPage === 'my-account') {
+                switchContent('my-account');
+            } else {
+                switchContent('my-order'); // Default landing view dashboard
+            }
+
+            // Dropdown Menu Controller
             const subMenu = $('#sub-menu-order');
             const arrowIcon = $('#icon-arrow');
-            
-            // Set default terbuka sesuai skema
             subMenu.removeClass('hidden');
             arrowIcon.addClass('-rotate-90 text-amber-400');
 
             $('#btn-dropdown-order').click(function() {
-                if(subMenu.hasClass('hidden')) {
-                    subMenu.removeClass('hidden');
-                    arrowIcon.addClass('-rotate-90 text-amber-400');
-                } else {
-                    subMenu.addClass('hidden');
-                    arrowIcon.removeClass('-rotate-90 text-amber-400');
-                }
+                subMenu.toggleClass('hidden');
+                arrowIcon.toggleClass('-rotate-90 text-amber-400');
             });
         });
 
-        // Fungsi Simulasi untuk memindahkan isi konten di sidepanel secara interaktif
         function switchContent(panelId) {
-            // Sembunyikan semua panel
             $('.content-panel').addClass('hidden');
+            $('nav a, nav id').removeClass('bg-gradient-to-r from-[#0A2A5E] to-[#0D3678] text-white font-semibold').addClass('text-gray-400');
             
-            // Tampilkan panel yang dipilih & ganti judul Topbar
-            if (panelId === 'order-list') {
-                $('#panel-order-list').removeClass('hidden');
-                $('#topbar-title').html('<span class="w-1.5 h-6 bg-amber-400 rounded-full block"></span> Order List');
-            } else if (panelId === 'my-test') {
-                $('#panel-my-test').removeClass('hidden');
-                $('#topbar-title').html('<span class="w-1.5 h-6 bg-amber-400 rounded-full block"></span> My Test');
-            } else if (panelId === 'my-class') {
-                $('#panel-my-class').removeClass('hidden');
-                $('#topbar-title').html('<span class="w-1.5 h-6 bg-amber-400 rounded-full block"></span> My Class');
+            // Tampilkan panel target & ubah judul topbar
+            $(`#panel-${panelId}`).removeClass('hidden');
+            
+            if (panelId === 'my-order') {
+                $('#topbar-title').html('<span class="w-1.5 h-6 bg-amber-400 rounded-full block"></span> My Order');
+                $('#menu-my-order').addClass('bg-gradient-to-r from-[#0A2A5E] to-[#0D3678] text-white font-semibold').removeClass('text-gray-400');
             } else if (panelId === 'my-account') {
-                $('#panel-my-account').removeClass('hidden');
                 $('#topbar-title').html('<span class="w-1.5 h-6 bg-amber-400 rounded-full block"></span> My Account');
+                $('#menu-my-account').addClass('bg-gradient-to-r from-[#0A2A5E] to-[#0D3678] text-white font-semibold').removeClass('text-gray-400');
+            } else {
+                $(`#menu-${panelId}`).addClass('bg-gradient-to-r from-[#0A2A5E] to-[#0D3678] text-white font-semibold').removeClass('text-gray-400');
+                $('#topbar-title').html(`<span class="w-1.5 h-6 bg-amber-400 rounded-full block"></span> ${panelId.replace('-',' ').toUpperCase()}`);
             }
         }
     </script>
