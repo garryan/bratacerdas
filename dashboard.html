@@ -3,23 +3,17 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="g1cbApoTiPIysPzstdFz8UTEuKPJS69n2tp362hc">
     <title>Dashboard Siswa - BAJRATARA</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="https://bratacerdas.com/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-
-    <style>
-        body { font-family: 'Inter', sans-serif; background-color: #111111; }
-        h1, h2, h3, th { font-family: 'Montserrat', sans-serif; }
-    </style>
 </head>
-<body class="text-gray-200 antialiased min-h-screen flex flex-col md:flex-row">
+<body class="text-gray-200 antialiased min-h-screen flex flex-col md:flex-row bg-[#111111]">
 
     <aside class="w-full md:w-64 bg-[#0a0a0a] border-b md:border-b-0 md:border-r border-gray-800 flex flex-col justify-between shrink-0 z-40">
-        <div class="overflow-y-auto flex-1">
+        <div class="overflow-y-auto flex-1 sidebar-scroll">
             <div class="h-20 flex items-center px-6 border-b border-gray-800/60 justify-between">
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 bg-gradient-to-br from-amber-400 to-amber-500 rounded-full flex flex-col items-center justify-center font-bold text-[#111111] shadow-md">
@@ -39,7 +33,7 @@
                 </div>
                 <div>
                     <p class="text-[9px] text-gray-500 uppercase tracking-widest font-bold">Siswa Taruna</p>
-                    <p class="text-sm font-bold text-white tracking-wide">RYAN GARRY</p>
+                    <p class="text-sm font-bold text-white tracking-wide" id="profile-display-name">RYAN GARRY</p>
                 </div>
             </div>
 
@@ -115,7 +109,6 @@
                     </div>
                     <div class="p-6">
                         <div class="overflow-x-auto w-full">
-                            <input type="hidden" id="url_dt" value="https://bratacerdas.com/order/datatable">
                             <table class="table-auto w-full text-left border-collapse" id="dt-order">
                                 <thead>
                                     <tr class="border-b border-gray-800 text-gray-400 text-xs uppercase tracking-wider bg-[#1d1d1d]">
@@ -127,7 +120,20 @@
                                         <th class="p-4 font-bold text-center rounded-r-xl">Aksi</th>
                                     </tr>
                                 </thead>
-                                <tbody class="text-sm divide-y divide-gray-800/50 font-medium text-gray-300"></tbody>
+                                <tbody class="text-sm divide-y divide-gray-800/50 font-medium text-gray-300">
+                                    <tr>
+                                        <td class="p-4">1</td>
+                                        <td class="p-4 font-bold text-white">TRY OUT TEST CAT PSIKOLOGI AKPOL</td>
+                                        <td class="p-4">Psikologi</td>
+                                        <td class="p-4">Mandiri (Kapan Saja)</td>
+                                        <td class="p-4 text-amber-400 font-bold">Rp 300.000</td>
+                                        <td class="p-4 text-center">
+                                            <button onclick="bukaModalUpload('TRY OUT TEST CAT PSIKOLOGI AKPOL', '300000')" class="px-3 py-1.5 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bold text-xs rounded-lg transition shadow-md">
+                                                <i class="fa-solid fa-cloud-arrow-up mr-1"></i> Upload Bukti
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -148,22 +154,22 @@
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                             <div>
                                 <label class="block text-xs font-bold text-gray-400 uppercase mb-2 tracking-wide">Nama Lengkap</label>
-                                <input type="text" value="RYAN GARRY" class="w-full bg-[#1e1e1e] border border-gray-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-400 transition">
+                                <input type="text" id="input-nama" value="RYAN GARRY" required class="w-full bg-[#1e1e1e] border border-gray-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-400 transition">
                             </div>
                             <div>
                                 <label class="block text-xs font-bold text-gray-400 uppercase mb-2 tracking-wide">Email Siswa (Terkunci)</label>
-                                <input type="email" value="ryangarry@gmail.com" disabled class="w-full bg-[#111111] border border-gray-800 rounded-xl px-4 py-3 text-sm text-gray-500 cursor-not-allowed outline-none">
+                                <input type="email" id="input-email" value="ryangarry@gmail.com" disabled class="w-full bg-[#111111] border border-gray-800 rounded-xl px-4 py-3 text-sm text-gray-500 cursor-not-allowed outline-none">
                             </div>
                         </div>
 
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                             <div>
                                 <label class="block text-xs font-bold text-gray-400 uppercase mb-2 tracking-wide">Nomor WhatsApp Aktif</label>
-                                <input type="tel" required placeholder="Contoh: 08123456789" class="w-full bg-[#1e1e1e] border border-gray-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-400 transition">
+                                <input type="tel" id="input-whatsapp" required placeholder="Contoh: 08123456789" class="w-full bg-[#1e1e1e] border border-gray-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-400 transition">
                             </div>
                             <div>
                                 <label class="block text-xs font-bold text-gray-400 uppercase mb-2 tracking-wide">Target Seleksi Utama</label>
-                                <select required class="w-full bg-[#1e1e1e] border border-gray-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-400 transition appearance-none">
+                                <select id="input-target" required class="w-full bg-[#1e1e1e] border border-gray-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-400 transition appearance-none">
                                     <option value="" disabled selected>Pilih Instansi Target</option>
                                     <option value="AKPOL">AKPOL (Akademi Kepolisian)</option>
                                     <option value="BINTARA">BINTARA POLRI</option>
@@ -174,7 +180,7 @@
                         </div>
 
                         <div class="pt-4 border-t border-gray-800 flex justify-end">
-                            <button type="submit" class="px-6 py-3 bg-gradient-to-r from-amber-400 to-amber-500 text-black font-extrabold text-xs rounded-xl shadow-lg shadow-amber-500/10 uppercase tracking-wider hover:scale-102 transition">
+                            <button type="submit" id="btn-submit-profile" class="px-6 py-3 bg-gradient-to-r from-amber-400 to-amber-500 text-black font-extrabold text-xs rounded-xl shadow-lg shadow-amber-500/10 uppercase tracking-wider hover:scale-102 transition">
                                 Simpan Profil & Aktifkan Fitur
                             </button>
                         </div>
@@ -190,19 +196,24 @@
     </main>
 
     <script src="https://bratacerdas.com/plugins/jquery/jquery.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            // Cek parameter di URL (?page=my-account) untuk mendeteksi user baru dari halaman login
-            const urlParams = new URLSearchParams(window.location.search);
-            const targetPage = urlParams.get('page');
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-            if (targetPage === 'my-account') {
+    <script>
+        // ========================================================
+        // TEPAT DI SINI: PASTE URL GOOGLE APPS SCRIPT BAPAK!!!
+        // ========================================================
+        const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxWlAsMJQBKtK5AuaHZjzIKD5R5FtcumHgvDca7NOiwd2jYyTyyHmRvv1NCNUvN7FkP/exec";
+
+        $(document).ready(function() {
+            // Deteksi Parameter URL (?page=my-account)
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('page') === 'my-account') {
                 switchContent('my-account');
             } else {
-                switchContent('my-order'); // Default landing view dashboard
+                switchContent('my-order');
             }
 
-            // Dropdown Menu Controller
+            // Dropdown Nav Handler
             const subMenu = $('#sub-menu-order');
             const arrowIcon = $('#icon-arrow');
             subMenu.removeClass('hidden');
@@ -212,13 +223,65 @@
                 subMenu.toggleClass('hidden');
                 arrowIcon.toggleClass('-rotate-90 text-amber-400');
             });
+
+            // ========================================================
+            // INTERCEPT SUBMIT FORM BIODATA -> KIRIM KE GOOGLE SHEETS
+            // ========================================================
+            $('#form-update-profile').submit(function(e) {
+                e.preventDefault(); // Cegah halaman reload otomatis
+
+                // Loading Pop-up Modern
+                Swal.fire({
+                    title: 'Memproses Data...',
+                    text: 'Sedang mendaftarkan biodata Anda ke sistem pusat.',
+                    allowOutsideClick: false,
+                    didOpen: () => { Swal.showLoading(); }
+                });
+
+                // Kumpulkan data input form
+                const dataKirim = {
+                    action: "register",
+                    nama: $('#input-nama').val(),
+                    email: $('#input-email').val(), // Poin lock email aman
+                    whatsapp: $('#input-whatsapp').val(),
+                    target: $('#input-target').val()
+                };
+
+                // Tembak menggunakan AJAX gratisan JQuery
+                $.ajax({
+                    url: APPS_SCRIPT_URL,
+                    type: "POST",
+                    dataType: "json",
+                    data: dataKirim,
+                    success: function(response) {
+                        if (response.status === "success") {
+                            // Update nama di tampilan sidebar secara live
+                            $('#profile-display-name').text(dataKirim.nama.toUpperCase());
+                            
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Profil Terupdate!',
+                                text: 'Biodata sukses tercatat di Google Sheets BAJRATARA.',
+                                timer: 3000,
+                                showConfirmButton: false
+                            }).then(() => {
+                                switchContent('my-order'); // Otomatis lempar ke halaman tagihan
+                            });
+                        } else {
+                            Swal.fire('Gagal!', response.message, 'error');
+                        }
+                    },
+                    error: function() {
+                        Swal.fire('Sistem Error', 'Gagal terhubung dengan database Sheets. Cek status deployment Anda.', 'error');
+                    }
+                });
+            });
         });
 
+        // FUNGSI SWITCH INTERAKTIF MENU SIDEBAR
         function switchContent(panelId) {
             $('.content-panel').addClass('hidden');
             $('nav a, nav id').removeClass('bg-gradient-to-r from-[#0A2A5E] to-[#0D3678] text-white font-semibold').addClass('text-gray-400');
-            
-            // Tampilkan panel target & ubah judul topbar
             $(`#panel-${panelId}`).removeClass('hidden');
             
             if (panelId === 'my-order') {
@@ -231,6 +294,11 @@
                 $(`#menu-${panelId}`).addClass('bg-gradient-to-r from-[#0A2A5E] to-[#0D3678] text-white font-semibold').removeClass('text-gray-400');
                 $('#topbar-title').html(`<span class="w-1.5 h-6 bg-amber-400 rounded-full block"></span> ${panelId.replace('-',' ').toUpperCase()}`);
             }
+        }
+
+        // Fungsi Placeholder simulasi klik tombol upload
+        function bukaModalUpload(paket, harga) {
+            Swal.fire('Langkah Berikutnya', `Anda memilih pembayaran untuk ${paket}. Fitur upload struk ke Google Drive akan kita aktifkan di tahap selanjutnya!`, 'info');
         }
     </script>
 </body>
