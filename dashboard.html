@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="g1cbApoTiPIysPzstdFz8UTEuKPJS69n2tp362hc">
+    <title>Dashboard Siswa - BAJRATARA</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://bratacerdas.com/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="https://bratacerdas.com/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://bratacerdas.com/plugins/select2/css/select2.min.css">
+
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #111111; }
+        h1, h2, h3, th { font-family: 'Montserrat', sans-serif; }
+        /* Custom Scrollbar Sidebar */
+        .sidebar-scroll::-webkit-scrollbar { width: 4px; }
+        .sidebar-scroll::-webkit-scrollbar-track { background: #0a0a0a; }
+        .sidebar-scroll::-webkit-scrollbar-thumb { background: #222; border-radius: 2px; }
+        .sidebar-scroll::-webkit-scrollbar-thumb:hover { background: #FFD700; }
+    </style>
+</head>
+<body class="text-gray-200 antialiased min-h-screen flex flex-col md:flex-row">
+
+    <aside class="w-full md:w-64 bg-[#0a0a0a] border-b md:border-b-0 md:border-r border-gray-800 flex flex-col justify-between shrink-0 z-40">
+        <div class="sidebar-scroll overflow-y-auto flex-1">
+            <div class="h-20 flex items-center px-6 border-b border-gray-800/60 justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-amber-400 to-amber-500 rounded-full flex flex-col items-center justify-center font-bold text-[#111111] shadow-md shadow-amber-500/5">
+                        <span class="text-[10px] leading-none">⭐</span>
+                        <span class="text-base font-black leading-none -mt-0.5">BC</span>
+                    </div>
+                    <div>
+                        <span class="text-sm font-black tracking-wider block text-white">BAJRATARA</span>
+                        <span class="text-[9px] text-amber-400 font-semibold tracking-widest uppercase block -mt-1">Brata Cerdas</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-4 border-b border-gray-900 bg-[#121212]/30 flex items-center space-x-3">
+                <div class="w-9 h-9 bg-gradient-to-tr from-[#0A2A5E] to-[#1a4b8f] rounded-full flex items-center justify-center font-bold text-white uppercase text-xs border border-gray-700">
+                    RG
+                </div>
+                <div>
+                    <p class="text-[9px] text-gray-500 uppercase tracking-widest font-bold">Siswa Taruna</p>
+                    <p class="text-sm font-bold text-white tracking-wide">RYAN GARRY</p>
+                </div>
+            </div>
+
+            <nav class="p-4 space-y-1 text-sm">
+                
+                <a href="https://bratacerdas.com/home" class="flex items-center space-x-3 px-4 py-3 rounded-xl text-gray-400 hover:text-amber-400 hover:bg-amber-400/5 transition duration-200">
+                    <i class="fas fa-home w-5 text-center text-base"></i>
+                    <span class="font-medium">Home</span>
+                </a>
+
+                <div class="space-y-1">
+                    <button id="btn-dropdown-order" class="w-full flex items-center justify-between px-4 py-3 rounded-xl text-gray-400 hover:text-amber-400 hover:bg-amber-400/5 transition duration-200 focus:outline-none">
+                        <span class="flex items-center space-x-3">
+                            <i class="fas fa-chart-pie w-5 text-center text-base"></i>
+                            <span class="font-medium">Order</span>
+                        </span>
+                        <i id="icon-arrow" class="fas fa-angle-left text-xs transition-transform duration-200"></i>
+                    </button>
+
+                    <div id="sub-menu-order" class="pl-4 space-y-1 hidden transition duration-200">
+                        <a href="https://bratacerdas.com/order/index" class="flex items-center justify-between px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#0A2A5E] to-[#0D3678] text-white shadow-md shadow-blue-950/40 font-semibold">
+                            <span class="flex items-center space-x-3">
+                                <i class="fas fa-shopping-cart w-5 text-center text-amber-400 text-sm"></i>
+                                <span>My Order</span>
+                            </span>
+                            <span class="px-2 py-0.5 text-[10px] font-black bg-red-500 text-white rounded-md">1</span>
+                        </a>
+                        <a href="https://bratacerdas.com/order/history" class="flex items-center space-x-3 px-4 py-2.5 rounded-xl text-gray-400 hover:text-amber-400 hover:bg-amber-400/5 transition duration-200">
+                            <i class="fas fa-list-alt w-5 text-center text-sm"></i>
+                            <span>Order List</span>
+                        </a>
+                    </div>
+                </div>
+
+                <a href="https://bratacerdas.com/mytest/index" class="flex items-center space-x-3 px-4 py-3 rounded-xl text-gray-400 hover:text-amber-400 hover:bg-amber-400/5 transition duration-200">
+                    <i class="fas fa-book w-5 text-center text-base"></i>
+                    <span class="font-medium">My Test</span>
+                </a>
+
+                <a href="https://bratacerdas.com/myclass/index" class="flex items-center space-x-3 px-4 py-3 rounded-xl text-gray-400 hover:text-amber-400 hover:bg-amber-400/5 transition duration-200">
+                    <i class="fas fa-chalkboard w-5 text-center text-base"></i>
+                    <span class="font-medium">My Class</span>
+                </a>
+
+                <a href="https://bratacerdas.com/my-account" class="flex items-center space-x-3 px-4 py-3 rounded-xl text-gray-400 hover:text-amber-400 hover:bg-amber-400/5 transition duration-200">
+                    <i class="fas fa-user w-5 text-center text-base"></i>
+                    <span class="font-medium">My Account</span>
+                </a>
+
+            </nav>
+        </div>
+
+        <div class="p-4 border-t border-gray-900 bg-[#070707]">
+            <a href="javascript:void(0)" onclick="logoutAndRemoveToken()" class="flex items-center space-x-3 px-4 py-3 text-sm font-semibold rounded-xl text-red-400 hover:bg-red-500/10 transition duration-200 w-full">
+                <i class="fas fa-power-off w-5 text-center text-base"></i>
+                <span>Log Out</span>
+            </a>
+        </div>
+    </aside>
+
+    <main class="flex-1 flex flex-col min-w-0">
+        
+        <header class="h-20 bg-[#111111] border-b border-gray-800 flex items-center justify-between px-4 sm:px-8 shrink-0">
+            <h1 class="text-xl font-bold text-white tracking-wide flex items-center gap-2">
+                <span class="w-1.5 h-6 bg-amber-400 rounded-full block"></span> Panel Kontrol Siswa
+            </h1>
+            <button onclick="document.documentElement.requestFullscreen();" class="text-gray-400 hover:text-white transition hidden sm:inline-block">
+                <i class="fas fa-expand-arrows-alt text-lg"></i>
+            </button>
+        </header>
+
+        <div class="p-4 sm:p-8 flex-1 overflow-y-auto">
+            <div class="max-w-7xl mx-auto space-y-6">
+                
+                <div class="bg-[#161616] border border-gray-800 rounded-2xl shadow-xl overflow-hidden">
+                    <div class="px-6 py-5 bg-[#1a1a1a] border-b border-gray-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                        <div>
+                            <h3 class="text-lg font-bold text-white">Keranjang Tagihan Saya (My Order)</h3>
+                            <p class="text-xs text-gray-400 mt-0.5">Selesaikan administrasi invoice Anda untuk mengaktifkan akses bimbingan.</p>
+                        </div>
+                        <span class="px-3 py-1 bg-amber-400/10 border border-amber-400/20 text-amber-400 rounded-full text-xs font-semibold tracking-wider uppercase">Sistem Finansial</span>
+                    </div>
+
+                    <div class="p-6">
+                        <div class="overflow-x-auto w-full">
+                            <input type="hidden" id="url_dt" value="https://bratacerdas.com/order/datatable">
+                            <table class="table-auto w-full text-left border-collapse" id="dt-order">
+                                <thead>
+                                    <tr class="border-b border-gray-800 text-gray-400 text-xs uppercase tracking-wider bg-[#1d1d1d]">
+                                        <th class="p-4 font-bold rounded-l-xl">No</th>
+                                        <th class="p-4 font-bold">Nama Paket Bimbingan</th>
+                                        <th class="p-4 font-bold">Kelas</th>
+                                        <th class="p-4 font-bold">Jadwal Kelas</th>
+                                        <th class="p-4 font-bold">Harga Paket</th>
+                                        <th class="p-4 font-bold text-center rounded-r-xl">Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-sm divide-y divide-gray-800/50 font-medium text-gray-300">
+                                    </tbody>
+                                <tfoot>
+                                    <tr class="bg-[#151515] font-bold border-t border-gray-800">
+                                        <td colspan="4" class="p-4 text-right text-gray-400">Total Tagihan:</td>
+                                        <td class="p-4 text-amber-400 text-lg font-black" id="totalPrice">Rp 0</td>
+                                        <td class="p-4 text-center">
+                                            <button class="px-5 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-bold text-xs rounded-lg shadow-lg shadow-emerald-900/30 hover:scale-105 transition" id="payButton" style="display:none">
+                                                Bayar Sekarang
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <footer class="h-16 border-t border-gray-900 bg-[#0a0a0a] flex items-center justify-between px-6 text-xs text-gray-500">
+            <p>&copy; 2026 <strong>Brata Cerdas.</strong> Platform BAJRATARA Tactical System.</p>
+        </footer>
+    </main>
+
+    <div id="enrichmentModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
+        <div class="bg-[#161616] border border-gray-800 rounded-2xl w-full max-w-sm p-6">
+            <h3 class="text-base font-bold text-white text-center mb-1">Langkah Terakhir Pendaftaran ⚡</h3>
+            <p class="text-xs text-gray-400 text-center mb-4">Harap lengkapi No. WhatsApp Anda untuk pengiriman koordinasi kelas.</p>
+            <form id="profileForm" class="space-y-4">
+                <div>
+                    <label class="block text-xs text-gray-400 uppercase font-bold mb-1">Nomor WhatsApp</label>
+                    <input type="tel" required class="w-full bg-[#1f2937] border border-gray-700 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:border-amber-400" placeholder="Contoh: 0812XXXXXXXX">
+                </div>
+                <button type="button" onclick="this.closest('#enrichmentModal').classList.add('hidden')" class="w-full py-2.5 bg-amber-400 text-black font-bold text-sm rounded-lg shadow-md">Masuk Dashboard</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://bratacerdas.com/plugins/jquery/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://bratacerdas.com/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="https://bratacerdas.com/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            // Logic Interaktif Dropdown Sidebar Menu Order (Buka secara default seperti gambar referensi Bapak)
+            const subMenu = $('#sub-menu-order');
+            const arrowIcon = $('#icon-arrow');
+            
+            // Tampilkan sub-menu secara default sesuai target gambar Bapak
+            subMenu.removeClass('hidden');
+            arrowIcon.addClass('-rotate-90 text-amber-400');
+
+            // Handler klik buka-tutup
+            $('#btn-dropdown-order').click(function() {
+                if(subMenu.hasClass('hidden')) {
+                    subMenu.removeClass('hidden');
+                    arrowIcon.addClass('-rotate-90 text-amber-400');
+                } else {
+                    subMenu.addClass('hidden');
+                    arrowIcon.removeClass('-rotate-90 text-amber-400');
+                }
+            });
+
+            // Jalankan Loader DataTables
+            dataTable();
+        });
+
+        // AJAX Handler Database Server Bapak
+        function dataTable() {
+            const url = $('#url_dt').val();
+            $('#dt-order').DataTable({
+                responsive: false,
+                processing: true,
+                serverSide: true,
+                scrollX: true,
+                ajax: {
+                    url: url,
+                    dataSrc: function(json) {
+                        $('#totalPrice').html(json.totalPrice);
+                        const orderId = json.data.length > 0 ? json.data[0].order_id : null;
+                        if (orderId) { $('#payButton').show().attr('onclick', `payOrder(${orderId})`); }
+                        return json.data;
+                    }
+                },
+                columns: [
+                    { data: 'DT_RowIndex', width: '5%' },
+                    { data: 'name', defaultContent: '-' },
+                    { data: 'class', defaultContent: '-' },
+                    { data: 'date', defaultContent: '-' },
+                    { data: 'price', defaultContent: '-' },
+                    { data: 'action', orderable: false, searchable: false }
+                ]
+            });
+        }
+
+        function logoutAndRemoveToken() {
+            window.location.href = "/logout";
+        }
+    </script>
+</body>
+</html>
